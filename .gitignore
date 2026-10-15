@@ -1,0 +1,40 @@
+# ─── Your project's repositories ────────────────────────────────────────────
+# Clone them into Codebase/. They are their own git repos and must never be
+# recorded in this one — a nested repo committed by accident becomes a gitlink
+# (mode 160000) with no .gitmodules, which breaks on clone for everyone else.
+# If one appears in `git status` as a single changed entry: git rm --cached Codebase/<repo>
+Codebase/*
+!Codebase/.gitkeep
+
+# ─── Machine-specific and secret ────────────────────────────────────────────
+# Personal overrides: machine paths, local permissions. Never shared.
+.claude/settings.local.json
+# MCP server config carries bearer tokens and OAuth settings.
+.mcp.json
+.mcp.json.bak-*
+# Dev-server configuration is per-machine; start from .claude/launch.json.example
+.claude/launch.json
+
+# ─── Loop working state ─────────────────────────────────────────────────────
+# Parallel build worktrees (one writer per tree — see CLAUDE.md).
+.worktrees/
+
+# ─── Documents ──────────────────────────────────────────────────────────────
+# Any synced team folder you add under Docs/ — read-only, and not versioned here.
+# Keep the name in step with the deny rules in .claude/settings.json.
+Docs/SHARED/
+
+# ─── Noise ──────────────────────────────────────────────────────────────────
+~$*
+desktop.ini
+.DS_Store
+*.cer
+
+# ─── Build artifacts ────────────────────────────────────────────────────────
+# Committed .pyc files break `git clone` on Windows: their names are long enough
+# that a normal checkout path exceeds the 260-character limit.
+__pycache__/
+*.py[cod]
+
+# Backups the BMAD installer leaves behind on upgrade
+*.bak

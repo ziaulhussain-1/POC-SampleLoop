@@ -1,0 +1,20 @@
+{
+  "//": "Copy to launch.json and edit. Lets the agent start your dev server and verify changes in a browser. launch.json itself is gitignored because ports and paths are per-machine.",
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "web",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "Codebase/your-web-repo",
+      "port": 3000
+    },
+    {
+      "name": "api",
+      "runtimeExecutable": "dotnet",
+      "runtimeArgs": ["run", "--project", "src/Api"],
+      "cwd": "Codebase/your-api-repo",
+      "port": 5000
+    }
+  ]
+}

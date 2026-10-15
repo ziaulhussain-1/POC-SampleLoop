@@ -1,0 +1,16 @@
+# Team / enterprise overrides for _bmad/config.toml.
+# Committed to the repo — applies to every developer on the project.
+# This file is NEVER touched by the installer. _bmad/config.toml IS regenerated on
+# every install, so durable values belong here rather than there.
+# Tables deep-merge over base config; keyed entries merge by key.
+
+# [core]
+# project_name = "Acme Portal"
+
+# Example: override an agent descriptor, or add a new agent.
+#
+# [agents.bmad-agent-pm]
+# description = "Prefers short, bulleted PRDs over narrative drafts."
+
+[core]
+project_name = "WS-SampleLoop"

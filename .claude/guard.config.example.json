@@ -1,0 +1,12 @@
+{
+  "//": "Copy to guard.config.json and fill in. That file is yours: the template never overwrites it, and it should be committed so your teammates get the same protection.",
+
+  "//deployBranch": "The branch your pipelines deploy from. Pushing it ships.",
+  "deployBranch": "TODO-deploy-branch",
+
+  "//guardedRepos": "Folder names under Codebase/ that deploy from it. A repo is guarded when one of its remotes matches one of these names.",
+  "guardedRepos": ["TODO-repo-one", "TODO-repo-two"],
+
+  "//ciOrg": "Azure DevOps organization whose pipeline, PR and REST rules apply. Leave as-is if you do not use Azure DevOps; those rules then never match.",
+  "ciOrg": "TODO-ci-org"
+}

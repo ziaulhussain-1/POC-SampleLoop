@@ -1,0 +1,35 @@
+#!/bin/sh
+# Refuses any push to the shared workspace template.
+#
+# Every team clones this workspace for a different project and then fills it with that project's
+# documents, planning artifacts and rulings. Pushing any of that back to the template would put one
+# client's material into the repository every other team clones next. This hook makes that
+# impossible rather than merely discouraged.
+#
+# Activated by setup.sh / setup.ps1, which set core.hooksPath to this directory.
+# Git passes the remote name as $1 and its URL as $2.
+
+TEMPLATE='github\.com[:/]+Solvefy/ai-dev-workspace(\.git)?/?$'
+
+if printf '%s' "$2" | grep -Eqi "$TEMPLATE"; then
+  cat >&2 <<'EOF'
+
+  ✗ push refused: that remote is the shared workspace template.
+
+    This workspace was cloned from the template and still points at it. Pushing would publish
+    this project's documents and artifacts to the repository every other team clones.
+
+    Push to your own remote instead:
+
+        git remote add origin <your project's workspace repo>
+        git push -u origin HEAD
+
+    To pull template improvements in, fetch — never push:
+
+        git fetch template && git merge template/main
+
+EOF
+  exit 1
+fi
+
+exit 0
