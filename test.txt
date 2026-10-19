@@ -1,0 +1,6 @@
+# Test
+
+This is a test file created in the POC-SampleLoop repository.
+
+Created: 2026-10-19
+Branch: feat/new-file-test
