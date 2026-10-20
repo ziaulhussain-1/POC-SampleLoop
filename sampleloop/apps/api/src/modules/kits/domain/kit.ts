@@ -14,8 +14,11 @@ export interface Principal {
   studioId?: string;
 }
 
+/** Once reserved (FR-7) a line names its held piece, or is marked unfulfilled. */
 export interface KitLine {
   sampleId: string;
+  samplePieceId?: string;
+  unfulfilled?: boolean;
 }
 
 export interface Kit {

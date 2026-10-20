@@ -9,7 +9,10 @@ export type KitErrorCode =
   | 'DUPLICATE_SAMPLE'
   | 'COLLECTION_DATE_IN_PAST'
   | 'RETURN_BEFORE_COLLECTION'
-  | 'KIT_NOT_FOUND';
+  | 'KIT_NOT_FOUND'
+  | 'KIT_NOT_RESERVABLE'
+  | 'NO_PIECE_AVAILABLE'
+  | 'HOLD_CONFLICT';
 
 export interface Conflict {
   entity: string;

@@ -16,4 +16,10 @@ export class InMemoryKitRepository implements KitRepository {
     const kit = this.kits.get(id);
     return kit && inScope(kit, scope) ? structuredClone(kit) : null;
   }
+
+  async update(kit: Kit, scope: StudioScope): Promise<void> {
+    const existing = this.kits.get(kit.id);
+    if (!existing || !inScope(existing, scope)) throw new KitError('KIT_NOT_FOUND', 'Kit not found.');
+    this.kits.set(kit.id, structuredClone(kit));
+  }
 }
