@@ -60,10 +60,10 @@ export interface SampleEdit {
   referenceCode?: string;
 }
 
-/** Catalogue maintenance is the Manager's (FR-1, FR-37). Staff read every field and write none. */
-function requireManager(by: Principal, action: string): void {
+/** Catalogue maintenance is the Manager's (FR-1, FR-2, FR-37). Staff read every field and write none. */
+export function requireManager(by: Principal, action: string): void {
   if (by.role !== 'manager') {
-    throw new SampleError('FORBIDDEN', `Only a Manager can ${action} a Sample.`);
+    throw new SampleError('FORBIDDEN', `Only a Manager can ${action}.`);
   }
 }
 
@@ -86,7 +86,7 @@ const REFERENCE_CODE = /^[A-Za-z0-9][A-Za-z0-9-]{1,31}$/;
 
 /** FR-1: validate a new Sample and build it. Uniqueness is the repository's to enforce. */
 export function draftSample(input: NewSample, by: Principal, id: string, now: Date): Sample {
-  requireManager(by, 'create');
+  requireManager(by, 'create a Sample');
 
   const referenceCode = required(input.referenceCode, 'Reference code');
   if (!REFERENCE_CODE.test(referenceCode)) {
@@ -121,7 +121,7 @@ export function draftSample(input: NewSample, by: Principal, id: string, now: Da
  * has to be able to correct a supplier on something it no longer lends.
  */
 export function applySampleEdit(sample: Sample, edit: SampleEdit, by: Principal, now: Date): Sample {
-  requireManager(by, 'edit');
+  requireManager(by, 'edit a Sample');
 
   if (
     edit.referenceCode !== undefined &&
@@ -152,7 +152,7 @@ export function applySampleEdit(sample: Sample, edit: SampleEdit, by: Principal,
  * (AD-1, AD-15). Retirement hides the Sample from Designers, never from history.
  */
 export function retireSample(sample: Sample, by: Principal, now: Date): Sample {
-  requireManager(by, 'retire');
+  requireManager(by, 'retire a Sample');
   if (sample.retiredAt) {
     throw new SampleError('SAMPLE_ALREADY_RETIRED', `${sample.referenceCode} is already retired.`, {
       entity: 'sample',

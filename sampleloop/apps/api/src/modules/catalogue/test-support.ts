@@ -14,6 +14,14 @@ export const staff: Principal = { userId: 'u-staff', role: 'staff' };
 export const manager: Principal = { userId: 'u-manager', role: 'manager' };
 export const designerA: Principal = { userId: 'u-des-a', role: 'designer', studioId: 'studio-a' };
 
+export const linen: NewSample = {
+  referenceCode: 'FB-3100',
+  name: 'Lahore Linen',
+  material: 'Fabric',
+  supplier: 'Karachi Textiles',
+  colour: 'Oat',
+};
+
 export const velvet: NewSample = {
   referenceCode: 'FB-2214',
   name: 'Milano Velvet',
