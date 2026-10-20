@@ -8,7 +8,12 @@ export type SampleErrorCode =
   | 'SAMPLE_NOT_FOUND'
   | 'REFERENCE_CODE_TAKEN'
   | 'REFERENCE_CODE_IMMUTABLE'
-  | 'SAMPLE_ALREADY_RETIRED';
+  | 'SAMPLE_ALREADY_RETIRED'
+  | 'SAMPLE_RETIRED'
+  | 'SAMPLE_PIECE_NOT_FOUND'
+  | 'SAMPLE_PIECE_ALREADY_REMOVED'
+  | 'SAMPLE_PIECE_ON_LOAN'
+  | 'SAMPLE_PIECE_HELD';
 
 export interface Conflict {
   entity: string;
